@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>作业9</title>
+
+</head>
+<body>
+	<script type="text/javascript">
+		var arr1= new Array();
+		var arr2 =new Array();
+		var obj;
+		var xhr;
+			if (window.XMLHttpRequest)
+ 				 {// code for IE7+, Firefox, Chrome, Opera, Safari
+  					xhr = new XMLHttpRequest();
+  					}
+			else
+  				{// code for IE6, IE5
+  					xhr = new ActiveXObject("Microsoft.XMLHTTP");
+  					};
+		xhr.open("get","https://www.easy-mock.com/mock/5c164e774bc5e34fe40b2a0c/example/request");
+		xhr.send();
+		xhr.onreadystatechange = function(){
+        if(xhr.readyState === 4 && xhr.status === 200){
+        	obj = JSON.parse(xhr.responseText);
+        	var div1 = document.createElement("div");
+        	div1.setAttribute("id","load");
+        	document.body.appendChild(div1);
+        	var img = document.createElement("img");
+        	img.setAttribute("src","");
+        	img.setAttribute("width","200px");
+        	img.setAttribute("height","200px");
+        	img.setAttribute("style","float:left");
+        	div1.appendChild(img);
+        	var div2 = document.createElement("div");
+        	div2.setAttribute("id","message");
+        	div2.setAttribute("style","float:left")
+        	div1.appendChild(div2);
+        	for(let i=0;i<6;i++){
+        	 arr1[i]=document.createElement("p");
+        	}      
+			var Finddiv2=document.getElementById("message");
+				for(let i=0;i<6;i++){
+					Finddiv2.appendChild(arr1[i])
+				}
+				for(let i=0;i<3;i++){
+        	 arr2[i]=document.createElement("li");
+        	}      
+        	for(let i=0;i<3;i++){
+					Finddiv2.appendChild(arr2[i])
+				}
+        	document.getElementsByTagName('img')[0].src = obj.img;
+        	var P =document.getElementsByTagName('p');
+        	P[0].innerText = '姓名:'+obj.name;
+        	P[1].innerText = '学号:'+obj.idNumber;
+        	P[2].innerText = '学校:' +obj.university;
+        	P[3].innerText = '学院:'+obj.college;
+        	P[4].innerText = '寝室号:'+obj.dormitoryNumber;
+        	P[5].innerText = '学习成绩:';
+        	var Li =document.getElementsByTagName('li');
+        	Li[0].innerText = obj.project[0].project1 + '成绩: ' + obj.project[0].score;
+        	Li[1].innerText = obj.project[1].project2 + '成绩: ' + obj.project[1].score;
+        	Li[2].innerText = obj.project[2].project3 + '成绩: ' + obj.project[2].score;
+        }
+    }
+    
+	</script>
+
+</body>
+</html>
